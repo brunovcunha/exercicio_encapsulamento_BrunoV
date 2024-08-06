@@ -6,9 +6,14 @@ public class ClienteFisico extends Cliente {
 
     @Override
     public double aplicarDesconto(Double valor) {
+
         double desconto = 0.1;
 
-        return valor * (1 - desconto);
+        if (super.getTipo().equals("clienteFisico")) {
+            return valor * (1 - desconto);
+        }
+        return valor;
+        
     }
 
 }

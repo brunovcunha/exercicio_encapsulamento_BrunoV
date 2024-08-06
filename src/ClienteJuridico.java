@@ -8,7 +8,10 @@ public class ClienteJuridico extends Cliente {
     public double aplicarDesconto(Double valor) {
         double desconto = 0.2;
 
-        return valor * (1 - desconto);
+        if (super.getTipo().equals("clienteJuridico")) {
+            return valor * (1 - desconto);
+        }
+        return valor;
     }
 
 }

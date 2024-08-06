@@ -9,20 +9,21 @@ public class Produto {
 
     public double aplicarImposto(Cliente cliente) {
         double imposto = 0.1;
+        double precoComDesconto = cliente.aplicarDesconto(precoBase);
 
-        return cliente.aplicarDesconto(precoBase) * imposto;
+        return precoComDesconto + (precoComDesconto * imposto);
     }
 
-    public double aplicarTaxaAdicional(Cliente cliente) {
+    public double aplicarTaxaAdicional() {
         double taxa = 50;
 
-        return cliente.aplicarDesconto(precoBase) + taxa;
+        return taxa;
     }
 
     public double calcularPrecoFinal(Cliente cliente) {
 
-        double precoFinal = cliente.aplicarDesconto(precoBase) + aplicarImposto(cliente)
-                + aplicarTaxaAdicional(cliente);
+        double precoFinal = aplicarImposto(cliente)
+                + aplicarTaxaAdicional();
 
         if (precoFinal < 0) {
             precoFinal = 0;
